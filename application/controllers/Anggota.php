@@ -325,19 +325,29 @@ class Anggota extends CI_Controller
         $data_post = $this->input->post();
 
         if ($data_post) {
-            if (!cek_tanggal_entri($data_post['tgl_keluar'])) {
-                $hasil['status'] = false;
-                $hasil['msg']    = "Data bulan lalu tidak boleh dihapus";
-            } else {
-                $query = $this->anggota_model->hapus_anggota_keluar($data_post);
+            // if (!cek_tanggal_entri($data_post['tgl_keluar'])) {
+            //     $hasil['status'] = false;
+            //     $hasil['msg']    = "Data bulan lalu tidak boleh dihapus";
+            // } else {
+            //     $query = $this->anggota_model->hapus_anggota_keluar($data_post);
 
-                if ($query) {
-                    $hasil['status'] = true;
-                    $hasil['msg']    = "Data Berhasil Dihapus";
-                } else {
-                    $hasil['status'] = false;
-                    $hasil['msg']    = "Data Gagal Dihapus";
-                }
+            //     if ($query) {
+            //         $hasil['status'] = true;
+            //         $hasil['msg']    = "Data Berhasil Dihapus";
+            //     } else {
+            //         $hasil['status'] = false;
+            //         $hasil['msg']    = "Data Gagal Dihapus";
+            //     }
+            // }
+
+            $query = $this->anggota_model->hapus_anggota_keluar($data_post);
+
+            if ($query) {
+                $hasil['status'] = true;
+                $hasil['msg']    = "Data Berhasil Dihapus";
+            } else {
+                $hasil['status'] = false;
+                $hasil['msg']    = "Data Gagal Dihapus";
             }
 
             echo json_encode($hasil);
